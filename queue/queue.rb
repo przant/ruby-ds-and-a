@@ -7,7 +7,7 @@ class Queue
   end
 
   def enqueue(item)
-    @queue << push item
+    @queue.insert(0, item)
     @head = @queue[@queue.size-1]
   end
 
@@ -18,8 +18,8 @@ class Queue
     @head = @queue[@queue.size-1]
   end
 
-  def head_item
-    @head
+  def size
+    @queue.size
   end
 
   def clear_queue
