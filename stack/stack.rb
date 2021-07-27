@@ -20,6 +20,10 @@ class Stack
     item_popped
   end
 
+  def size
+    @stack.size
+  end
+
   def display_stack
     if @stack.size.zero?
       display_empty_stack
@@ -51,58 +55,62 @@ class Stack
   end
 end
 
-puts 'Create a stack and push six items to it'
-stack = Stack.new
-stack.push_item 'a'
-stack.push_item 'b'
-stack.push_item 'c'
-stack.push_item 1
-stack.push_item 2
-stack.push_item 3
+#
+# Uncomment following lines to a visual test of Stack class
+# behavior
+#
+# puts 'Create a stack and push six items to it'
+# stack = Stack.new
+# stack.push_item 'a'
+# stack.push_item 'b'
+# stack.push_item 'c'
+# stack.push_item 1
+# stack.push_item 2
+# stack.push_item 3
 
-puts "Top element is #{stack.top}\n"
+# puts "Top element is #{stack.top}\n"
 
-stack.display_stack
-puts '#'*30
+# stack.display_stack
+# puts '#'*30
 
-puts 'Pop two items from stack'
-stack.pop_item
-stack.pop_item
+# puts 'Pop two items from stack'
+# stack.pop_item
+# stack.pop_item
 
-puts "Top element is #{stack.top}\n"
+# puts "Top element is #{stack.top}\n"
 
-stack.display_stack
-puts '#'*30
+# stack.display_stack
+# puts '#'*30
 
-puts 'Pop two items from stack'
-stack.pop_item
-stack.pop_item
+# puts 'Pop two items from stack'
+# stack.pop_item
+# stack.pop_item
 
-puts "Top element is #{stack.top}\n"
+# puts "Top element is #{stack.top}\n"
 
-stack.display_stack
-puts '#'*30
+# stack.display_stack
+# puts '#'*30
 
-puts 'Clear stack, then stack 25 numeric items and the clear stack again'
-stack.clear_stack
+# puts 'Clear stack, then stack 25 numeric items and the clear stack again'
+# stack.clear_stack
 
-puts "Top element is #{stack.top}\n"
+# puts "Top element is #{stack.top}\n"
 
-stack.display_stack
-puts ''
+# stack.display_stack
+# puts ''
 
-25.times do |value|
-  stack.push_item value
-end
+# 25.times do |value|
+#   stack.push_item value
+# end
 
-puts "Top element is #{stack.top}\n"
+# puts "Top element is #{stack.top}\n"
 
-stack.display_stack
-puts ''
+# stack.display_stack
+# puts ''
 
-stack.clear_stack
+# stack.clear_stack
 
-puts "Top element is #{stack.top}\n"
+# puts "Top element is #{stack.top}\n"
 
-stack.display_stack
-puts '#'*30
+# stack.display_stack
+# puts '#'*30
