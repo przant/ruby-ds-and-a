@@ -51,6 +51,20 @@ class SingleLinkedList
     end
   end
 
+  def delete_after_item(item)
+    return nil if @list.nil? || @size == 1
+
+    if @head.item == item
+      continue
+    elsif @list.item && @size == 2
+      @list.next = nil
+      @head = @current = @list
+    else
+      delete_after item
+    end
+    size -= 1
+  end
+
   def insert_before_item(item, value)
     return nil if @list.nil? || value.nil?
 
@@ -79,8 +93,7 @@ class SingleLinkedList
   def delete_end
     if @size == 1
       @list = @head = @current = nil
-    elsif
-      @size == 2
+    elsif @size == 2
       @head = @current = @list
       @head.next = @current.next = @list.next = nil
     else
@@ -101,10 +114,10 @@ class SingleLinkedList
   def delete_start
     if @size == 1
       @list = @head = @current = nil
-    elsif
-      @size == 2
-      @head = @current = @list
-      @head.next = @current.next = @list.next = nil
+    elsif @size == 2
+      node_to_delete = @list
+      @list = @head = @current = node_to_delete.next
+      node_to_delete = nil
     else
       destroy_start_node
     end
@@ -120,6 +133,20 @@ class SingleLinkedList
       @current = @current.next
       node = nil
     end
+  end
+
+  def delete_after(item)
+    node = find_item item
+    node_to_delete = node.next
+
+    if node_to_delete.next.nil?
+      node.next = nil
+      @head = @current = node
+    else
+      node.next = node_to_delete.next
+      @current = node
+    end
+    node_to_delete = nil
   end
 
   def insert_before(node, item)
@@ -143,6 +170,7 @@ class SingleLinkedList
 
   def destroy_end_node
     node_before = find_item_before @head.item
+
     if @head.equal? @current
       @head = @current = node_before
       @head.next = @current.next = nil
