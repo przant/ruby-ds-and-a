@@ -16,11 +16,25 @@ class SingleLinkedList
     @size += 1
   end
 
+  def delete_at_end
+    return nil if @list.nil?
+
+    delete_end
+    @size -= 1
+  end
+
   def insert_at_start(item)
     return nil if item.nil?
 
     insert_start item
     @size += 1
+  end
+
+  def delete_at_start
+    return nil if @list.nil?
+
+    delete_start
+    @size -=1
   end
 
   def insert_after_item(item, value)
@@ -62,6 +76,18 @@ class SingleLinkedList
     end
   end
 
+  def delete_end
+    if @size == 1
+      @list = @head = @current = nil
+    elsif
+      @size == 2
+      @head = @current = @list
+      @head.next = @current.next = @list.next = nil
+    else
+      destroy_end_node
+    end
+  end
+
   def insert_start(item)
     if @list.nil?
       insert_in_empty item
@@ -69,6 +95,18 @@ class SingleLinkedList
       @current = Node.new item
       @current.next = @list
       @list = @current
+    end
+  end
+
+  def delete_start
+    if @size == 1
+      @list = @head = @current = nil
+    elsif
+      @size == 2
+      @head = @current = @list
+      @head.next = @current.next = @list.next = nil
+    else
+      destroy_start_node
     end
   end
 
@@ -100,6 +138,25 @@ class SingleLinkedList
     @head.next = Node.new item
     @current = @head.next
     @head = @current
+    @head.next = @current.next = nil
+  end
+
+  def destroy_end_node
+    node_before = find_item_before @head.item
+    if @head.equal? @current
+      @head = @current = node_before
+      @head.next = @current.next = nil
+    else
+      @head = node_before
+      @head.next = nil
+    end
+    node_before = nil
+  end
+
+  def destroy_start_node
+    start_node = @list
+    @list = @current = start_node.next
+    start_node = nil
   end
 
   def new_next_node(node, item)
