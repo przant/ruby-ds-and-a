@@ -62,7 +62,7 @@ class SingleLinkedList
     else
       delete_after item
     end
-    size -= 1
+    @size -= 1
   end
 
   def insert_before_item(item, value)

@@ -526,6 +526,183 @@ describe SingleLinkedList do
       end
     end
 
+    describe 'delete_after_item' do
+      it 'should has a size of zero' do
+        sll = SingleLinkedList.new
+
+        sll.delete_after_item 'a'
+
+        expect(sll.size).to eq 0
+      end
+
+      it 'should has a nil current value' do
+        sll = SingleLinkedList.new
+
+        sll.delete_after_item 'a'
+
+        expect(sll.current).to eq nil
+      end
+
+      it 'should has a nil head value' do
+        sll = SingleLinkedList.new
+
+        sll.delete_after_item 'a'
+
+        expect(sll.head).to eq nil
+      end
+
+      it 'should has a size of one' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.size).to eq 1
+      end
+
+      it 'should has a not nil current value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.current).not_to eq nil
+      end
+
+      it 'should has a "a" current value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.current.item).to eq 'a'
+      end
+
+      it 'should has a "a" head value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.head.item).to eq 'a'
+      end
+
+      it 'should has a size of one' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.size).to eq 1
+      end
+
+      it 'should has a not nil current value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.current).not_to eq nil
+      end
+
+      it 'should has a "a" current value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.current.item).to eq 'a'
+      end
+
+      it 'should has a "a" head value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.delete_after_item 'b'
+
+        expect(sll.head.item).to eq 'a'
+      end
+
+      it 'should has a size of four' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.insert_at_end 'b'
+        sll.insert_at_end 'c'
+        sll.insert_at_end 'd'
+        sll.insert_at_end 'e'
+        sll.delete_after_item 'd'
+
+        expect(sll.size).to eq 4
+      end
+
+      it 'should has a "d" current value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.insert_at_end 'b'
+        sll.insert_at_end 'c'
+        sll.insert_at_end 'd'
+        sll.insert_at_end 'e'
+        sll.delete_after_item 'd'
+
+        expect(sll.current.item).to eq 'd'
+      end
+
+      it 'should has a "d" head value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_end 'a'
+        sll.insert_at_end 'b'
+        sll.insert_at_end 'c'
+        sll.insert_at_end 'd'
+        sll.insert_at_end 'e'
+        sll.delete_after_item 'd'
+
+        expect(sll.head.item).to eq 'd'
+      end
+
+      it 'should has a size of four' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.insert_at_start 'b'
+        sll.insert_at_start 'c'
+        sll.insert_at_start 'd'
+        sll.insert_at_start 'e'
+        sll.delete_after_item 'e'
+
+        expect(sll.size).to eq 4
+      end
+
+      it 'should has a "d" current value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.insert_at_start 'b'
+        sll.insert_at_start 'c'
+        sll.insert_at_start 'd'
+        sll.insert_at_start 'e'
+        sll.delete_after_item 'e'
+
+        expect(sll.current.item).to eq 'e'
+      end
+
+      it 'should has a "a" head value' do
+        sll = SingleLinkedList.new
+
+        sll.insert_at_start 'a'
+        sll.insert_at_start 'b'
+        sll.insert_at_start 'c'
+        sll.insert_at_start 'd'
+        sll.insert_at_start 'e'
+        sll.delete_after_item 'e'
+
+        expect(sll.head.item).to eq 'a'
+      end
+
+    end
+
     describe 'insert_before_item' do
       it 'should has a size of zero' do
         sll = SingleLinkedList.new
@@ -1222,6 +1399,192 @@ describe SingleLinkedList do
         sll.insert_after_item 'b', 'c'
 
         expect(sll.head.item).to eq 'e'
+      end
+    end
+
+    describe 'delete_after_item' do
+      it 'should has a size of one' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.delete_after_item 'a'
+
+        expect(sll.size).to eq 1
+      end
+
+      it 'should has a not nil current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.delete_after_item 'a'
+
+        expect(sll.current).not_to eq nil
+      end
+
+      it 'should has a "a" current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.delete_after_item 'a'
+
+        expect(sll.current.item).to eq 'a'
+      end
+
+      it 'should has a not nil head value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.delete_after_item 'a'
+
+        expect(sll.head).not_to eq nil
+      end
+
+      it 'should has a "a" head value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.delete_after_item 'a'
+
+        expect(sll.head.item).to eq 'a'
+      end
+
+      it 'should has a size of one' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.delete_after_item 'a'
+
+        expect(sll.size).to eq 1
+      end
+
+      it 'should has a not nil current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.delete_after_item 'a'
+
+        expect(sll.current).not_to eq nil
+      end
+
+      it 'should has a "a" current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.delete_after_item 'a'
+
+        expect(sll.current.item).to eq 'a'
+      end
+
+      it 'should has a "a" head value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.delete_after_item 'a'
+
+        expect(sll.head.item).to eq 'a'
+      end
+
+      it 'should has a size of one' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.delete_after_item 'b'
+
+        expect(sll.size).to eq 1
+      end
+
+      it 'should has a not nil current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.delete_after_item 'b'
+
+        expect(sll.current).not_to eq nil
+      end
+
+      it 'should has a "b" current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.delete_after_item 'b'
+
+        expect(sll.current.item).to eq 'b'
+      end
+
+      it 'should has a "b" head value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.delete_after_item 'b'
+
+        expect(sll.head.item).to eq 'b'
+      end
+
+      it 'should has a size of four' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.insert_at_end 'c'
+        sll.insert_at_end 'd'
+        sll.insert_at_end 'e'
+        sll.delete_after_item 'd'
+
+        expect(sll.size).to eq 4
+      end
+
+      it 'should has a "d" current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.insert_at_end 'c'
+        sll.insert_at_end 'd'
+        sll.insert_at_end 'e'
+        sll.delete_after_item 'd'
+
+        expect(sll.current.item).to eq 'd'
+      end
+
+      it 'should has a "d" head value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_end 'b'
+        sll.insert_at_end 'c'
+        sll.insert_at_end 'd'
+        sll.insert_at_end 'e'
+        sll.delete_after_item 'd'
+
+        expect(sll.head.item).to eq 'd'
+      end
+
+      it 'should has a size of four' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.insert_at_start 'c'
+        sll.insert_at_start 'd'
+        sll.insert_at_start 'e'
+        sll.delete_after_item 'e'
+
+        expect(sll.size).to eq 4
+      end
+
+      it 'should has a "d" current value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.insert_at_start 'c'
+        sll.insert_at_start 'd'
+        sll.insert_at_start 'e'
+        sll.delete_after_item 'e'
+
+        expect(sll.current.item).to eq 'e'
+      end
+
+      it 'should has a "a" head value' do
+        sll = SingleLinkedList.new 'a'
+
+        sll.insert_at_start 'b'
+        sll.insert_at_start 'c'
+        sll.insert_at_start 'd'
+        sll.insert_at_start 'e'
+        sll.delete_after_item 'e'
+
+        expect(sll.head.item).to eq 'a'
       end
     end
 
